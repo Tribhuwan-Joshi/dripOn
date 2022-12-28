@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/dripOn/static/css/main.686d8d87.css",
+    "main.js": "/dripOn/static/js/main.1a6eba53.js",
+    "static/media/dripGoku.jpg": "/dripOn/static/media/dripGoku.7f4ea4428e346366bea6.jpg",
+    "static/media/Cinzel-Regular.ttf": "/dripOn/static/media/Cinzel-Regular.6f33f01382c3d24eecb3.ttf",
+    "static/media/logo.png": "/dripOn/static/media/logo.dd1c3166338c49335bd4.png",
+    "index.html": "/dripOn/index.html",
+    "main.686d8d87.css.map": "/dripOn/static/css/main.686d8d87.css.map",
+    "main.1a6eba53.js.map": "/dripOn/static/js/main.1a6eba53.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.686d8d87.css",
+    "static/js/main.1a6eba53.js"
+  ]
+}
