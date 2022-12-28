@@ -8,7 +8,7 @@ import Cart from "./components/Cart";
 export default function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<Navbar />}>
             <Route index element={<Home />} />
