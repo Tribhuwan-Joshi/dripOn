@@ -14,7 +14,7 @@ const Navbar = () => (
           to="/"
           className={({ isActive }) =>
             `${
-              isActive ? "underline" : ""
+              isActive ? "underline underline-offset-4" : ""
             } hover:scale-125 transition duration-500 ease-in-out text-sm md:text-xl lg:text-xl`
           }
         >
@@ -24,17 +24,23 @@ const Navbar = () => (
           to="/shop"
           className={({ isActive }) =>
             `${
-              isActive ? "underline" : ""
+              isActive ? "underline underline-offset-4" : ""
             } hover:scale-125 transition duration-500 ease-in-out text-sm md:text-xl lg:text-xl`
           }
         >
           Shop
         </NavLink>
-        <NavLink to="/cart" className={({isActive}) => `${isActive ? 'underline' : ''}`}>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) =>
+            `${isActive ? "underline underline-offset-4" : ""}`
+          }
+        >
           <img
             src={cart}
             alt="car"
-className =  'hover:scale-125 transition duration-500 ease-in-out text-sm md:text-xl lg:text-xl' />
+            className="hover:scale-125 transition duration-500 ease-in-out w-[34px]"
+          />
         </NavLink>
       </div>
     </nav>

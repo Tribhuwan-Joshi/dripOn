@@ -1,4 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+@font-face {
+    font-family: 'Cinzel';
+    src: url('assets/Cinzel-Regular.ttf');
+}
