@@ -38,7 +38,9 @@ const Navbar = () => (
         >
           <div className="flex hover:scale-125 transition duration-500 ease-in-out">
             <img src={cart} alt="car" className=" w-[38px]" />
-            <div className="rounded-full h-7 w-7 text-white text-lg">10</div>
+            <div className="rounded-full font-mono bg-white text-bold text-black px-1 h-fit">
+              10
+            </div>
           </div>
         </NavLink>
       </div>

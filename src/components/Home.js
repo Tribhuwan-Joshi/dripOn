@@ -1,5 +1,5 @@
 import drip from "../assets/dripGoku.jpg";
-
+import { Link } from "react-router-dom";
 const Home = () => (
   <>
     <div className="flex bg-red-200 flex-1 font-['Cinzel'] tracking-wider  font-semibold">
@@ -8,10 +8,12 @@ const Home = () => (
           GET THE REAL DRIP THAT DEFINES YOU !{" "}
         </h1>
         <br />
-        <button className="border transition hover:scale-125 duration-300 ease-in-out border-black text-2xl p-4 hover:text-white hover:bg-[#321F28] w-[20%] min-w-[100px] mx-auto ">
-          {" "}
-          Buy Now
-        </button>
+        <Link to="/shop" className="min-w-[100px]">
+          <button className="border transition hover:scale-125 duration-300 ease-in-out border-black text-2xl p-4 hover:text-white hover:bg-[#321F28]  min-w-[100px] mx-auto ">
+            {" "}
+            Buy Now
+          </button>
+        </Link>
       </div>
 
       <img
