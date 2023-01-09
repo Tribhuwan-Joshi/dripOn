@@ -27,27 +27,36 @@
 * {
   box-sizing: border-box;
 }
-.pay,.empty{
+.pay,
+.empty {
   display: inline-block;
   position: relative;
-
 }
-.pay::after , .empty::after{
+.pay::after,
+.empty::after {
   content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
   height: 2px;
   bottom: 0;
-  left:0;
+  left: 0;
   background-color: wheat;
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
 
-
-.pay:hover::after , .empty:hover::after{
+.pay:hover::after,
+.empty:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
 
+.box {
+  --mask: radial-gradient(82.01px at 50% 115px, #000 99%, #0000 101%)
+      calc(50% - 100px) 0/200px 100%,
+    radial-gradient(82.01px at 50% -65px, #0000 99%, #000 101%) 50% 50px/200px
+      100% repeat-x;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}
