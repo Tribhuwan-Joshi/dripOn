@@ -4,7 +4,7 @@ import cart from "../assets/cart.png";
 
 const Navbar = () => (
   <>
-    <nav className="h-[12%] sticky font-['Cinzel'] top-0 text-white bg-[#321F28] shadow-md flex justify-between items-center shadow-gray-500">
+    <nav className="h-[12%] z-10 sticky font-['Cinzel'] top-0 text-white bg-[#321F28] shadow-md flex justify-between items-center shadow-gray-500">
       <div className="flex w-[50%] justify-between items-center">
         <img src={logo} alt="logo" className="w-[14%] min-w-[100px]" />
         <div className="text-5xl items-center justify-center">DripOn</div>
