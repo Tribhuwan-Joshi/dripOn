@@ -27,3 +27,26 @@
 * {
   box-sizing: border-box;
 }
+.pay,.empty{
+  display: inline-block;
+  position: relative;
+
+}
+.pay::after , .empty::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left:0;
+  background-color: wheat;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+
+.pay::after , .empty::after{
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
