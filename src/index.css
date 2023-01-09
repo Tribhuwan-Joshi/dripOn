@@ -46,7 +46,8 @@
 }
 
 
-.pay::after , .empty::after{
+.pay:hover::after , .empty:hover::after{
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
