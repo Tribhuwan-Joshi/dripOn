@@ -99,7 +99,7 @@ function Cart() {
           })}
         </div>
       </div>
-      <div className="w-[25vw] checkout bottom-0   fixed right-0 h-[90vh]  bg-gray-200  flex flex-col pt-4 gap-12 shadow-lg  shadow-gray-700">
+      <div className="w-[25vw] checkout bottom-0   fixed right-0 h-[90vh]  bg-gray-200  flex flex-col pt-4 gap-12 shadow-lg min-w-[200px] shadow-gray-700">
         <h1 className="text-3xl lg:text-4xl text-center underline underline-offset-4 font-semibold mt-4">
           {" "}
           Net Amount
