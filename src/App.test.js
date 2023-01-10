@@ -4,8 +4,27 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import Home from "./components/Home";
+import Navbar from "./components/Navbar";
 
-describe("Home", () => {
+describe("Test Navbar", () => {
+  it("Site Name is present", () => {
+    <Router>
+      render(
+      <Navbar />
+      ); expect(screen.getByText("DripOn")).toBeInTheDocument();
+    </Router>;
+  });
+  it("Cart Link is present", () => {
+    <Router>
+      render(
+      <Navbar />
+      ); 
+      expect(screen.getByRole("img")).toBeInTheDocument();
+    </Router>;
+  });
+});
+
+describe("Test Home Page", () => {
   it("render heading", () => {
     <Router>
       render(
