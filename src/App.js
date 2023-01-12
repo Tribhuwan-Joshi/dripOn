@@ -14,7 +14,6 @@ export default function App() {
   const [watches, setWatches] = useState(shopItems[0]);
   const [shoes, setShoes] = useState(shopItems[0]);
   useEffect(() => {
-    
     setHoddies(shopItems[0]);
     setWatches(shopItems[1]);
     setShoes(shopItems[2]);
@@ -30,9 +29,9 @@ export default function App() {
               ...item,
               itemCount:
                 sign === "+"
-                  ? item.itemCount + 1
-                  : item.itemCount > 1
-                  ? item.itemCount - 1
+                  ? +item.itemCount + 1
+                  : +item.itemCount > 1
+                  ? +item.itemCount - 1
                   : 1,
             };
           }
@@ -42,7 +41,18 @@ export default function App() {
     );
   }
 
-  function handleCountChange(e, name) {}
+  function handleCountChange(e, name) {
+    const value = e.target.value;
+    setShopItems((prev) =>
+      prev.map((cat) =>
+        cat.map((item) => {
+          if (item.name === name)
+            return { ...item, itemCount: value > 1 ? value : 1 };
+          return item;
+        })
+      )
+    );
+  }
   function handleCartClick(name) {}
   return (
     <>
