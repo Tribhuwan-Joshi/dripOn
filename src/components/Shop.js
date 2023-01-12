@@ -1,53 +1,13 @@
-import h1 from "../assets/hoodies/h1.jpg";
-import h2 from "../assets/hoodies/h2.jpg";
-import h3 from "../assets/hoodies/h3.jpg";
-import h4 from "../assets/hoodies/h4.jpg";
-import h5 from "../assets/hoodies/h5.jpg";
-import h6 from "../assets/hoodies/h6.jpg";
-import w1 from "../assets/watches/w1.jpg";
-import w2 from "../assets/watches/w2.jpg";
-import w3 from "../assets/watches/w3.jpg";
-import w4 from "../assets/watches/w4.jpg";
-import w5 from "../assets/watches/w5.jpg";
-import w6 from "../assets/watches/w6.jpg";
-import s1 from "../assets/shoes/s1.jpg";
-import s2 from "../assets/shoes/s2.jpg";
-import s3 from "../assets/shoes/s3.jpg";
-import s4 from "../assets/shoes/s4.jpg";
-import s5 from "../assets/shoes/s5.jpg";
-import s6 from "../assets/shoes/s6.jpg";
-import { useState } from "react";
 
-const hoodies = [
-  { name: "Driper", src: h1 },
-  { name: "SuperDry", src: h2 },
-  { name: "Pirate", src: h3 },
-  { name: "Coax", src: h4 },
-  { name: "Phew", src: h5 },
-  { name: "Mighty Morty", src: h6 },
-];
-const watches = [
-  { name: "Royalty", src: w1 },
-  { name: "Timex", src: w2 },
-  { name: "Google watch", src: w3 },
-  { name: "Coax", src: w4 },
-  { name: "Riener", src: w5 },
-  { name: "Courel", src: w6 },
-];
-const shoes = [
-  { name: "Asian", src: s1 },
-  { name: "Campus", src: s2 },
-  { name: "Nike", src: s3 },
-  { name: "wolf", src: s4 },
-  { name: "Jordan", src: s5 },
-  { name: "Comber", src: s6 },
-];
-
-function Shop() {
-  const [value, setValue] = useState(1);
-  function handleChange(e) {
-    setValue(e.target.value);
-  }
+function Shop({
+  hoodies,
+  watches,
+  shoes,
+  handleCountClick,
+  handleCountChange,
+  handleCartClick,
+}) {
+  
   return (
     <div
       className={`bg-shop gap-3 h-full flex overflow-auto  items-center p-2 flex-col`}
@@ -71,25 +31,34 @@ function Shop() {
                 className=" flex-1  h-[80%] object-cover"
               />
               <div className="flex text-white bg-[#704F4F] border-t-2 border-black items-center flex-grow-0 flex-wrap justify-between flex-1">
-                <h2 className="tracking-wider text-xl text-black bg-yellow-200">
-                  $9.99
+                <h2 className="tracking-wider text-semibold text-2xl text-black bg-red-200">
+                  $ {h.price}
                 </h2>
                 <div className="flex-1 flex justify-center items-center gap-2  ">
                   {" "}
-                  <button className="bg-gray-200  font-serif w-[30px] h-[80%] text-black text-lg">
+                  <button
+                    onClick={(e) => handleCountClick(e, h.name)}
+                    className="bg-gray-200  font-serif w-[30px] h-[80%] text-black text-lg"
+                  >
                     -
                   </button>{" "}
                   <input
-                    value={value}
-                    onChange={handleChange}
+                    onChange={(e) => handleCountChange(e, h.name)}
+                    value={h.itemCount}
                     type="number"
                     className="h-[60%] text-center text-black w-[40%] font-mono"
                   />
-                  <button className="bg-gray-200 font-serif w-[30px] h-[80%] text-black text-lg">
+                  <button
+                    onClick={(e) => handleCountClick(e, h.name)}
+                    className="bg-gray-200 font-serif w-[30px] h-[80%] text-black text-lg"
+                  >
                     +
                   </button>
                 </div>
-                <button className="bg-green-600 px-1 font-sans">
+                <button
+                  onClick={(e) => handleCartClick(e, h.name)}
+                  className="bg-green-600 px-1 font-sans"
+                >
                   Add To Cart
                 </button>
               </div>
@@ -117,25 +86,34 @@ function Shop() {
                 className=" flex-1  h-[80%] object-cover"
               />
               <div className="flex border-t-2 border-black text-white bg-[#704F4F] items-center flex-grow-0 flex-wrap justify-between flex-1">
-                <h2 className="tracking-wider text-xl text-black bg-yellow-200">
-                  $9.99
+                <h2 className="tracking-wider text-2xl  text-black bg-red-200">
+                  ${h.price}
                 </h2>
                 <div className="flex-1 flex justify-center items-center gap-2  ">
                   {" "}
-                  <button className="bg-gray-200 font-serif w-[30px] h-[80%] text-black text-lg">
+                  <button
+                    onClick={(e) => handleCountClick(e, h.name)}
+                    className="bg-gray-200 font-serif w-[30px] h-[80%] text-black text-lg"
+                  >
                     -
                   </button>{" "}
                   <input
-                    value={value}
-                    onChange={handleChange}
+                    onChange={(e) => handleCountChange(e, h.name)}
+                    value={h.itemCount}
                     type="number"
                     className="h-[60%] text-center text-black w-[40%] font-mono"
                   />
-                  <button className="bg-gray-200 font-serif w-[30px] h-[80%] text-black text-lg">
+                  <button
+                    onClick={(e) => handleCountClick(e, h.name)}
+                    className="bg-gray-200 font-serif w-[30px] h-[80%] text-black text-lg"
+                  >
                     +
                   </button>
                 </div>
-                <button className="bg-green-600 px-1 font-sans">
+                <button
+                  onClick={(e) => handleCountClick(e, h.name)}
+                  className="bg-green-600 px-1 font-sans"
+                >
                   Add To Cart
                 </button>
               </div>
@@ -163,21 +141,27 @@ function Shop() {
               />
 
               <div className="flex border-t-2 border-black text-white bg-[#704F4F] items-center flex-grow-0 flex-wrap justify-between flex-1">
-                <h2 className="tracking-wider text-xl text-black bg-yellow-200">
-                  $9.99
+                <h2 className="tracking-wider text-2xl text-black bg-yellow-200">
+                  ${h.price}
                 </h2>
                 <div className="flex-1 flex justify-center items-center gap-2  ">
                   {" "}
-                  <button className="bg-gray-200 font-serif w-[30px] h-[80%] text-black text-lg">
+                  <button
+                    onClick={(e) => handleCountClick(e, h.name)}
+                    className="bg-gray-200 font-serif w-[30px] h-[80%] text-black text-lg"
+                  >
                     -
                   </button>{" "}
                   <input
-                    value={value}
-                    onChange={handleChange}
+                    onChange={(e) => handleCountChange(e, h.name)}
+                    value={h.itemCount}
                     type="number"
                     className="h-[60%] text-center text-black w-[40%] font-mono"
                   />
-                  <button className="bg-gray-200 font-serif w-[30px] h-[80%] text-black text-lg">
+                  <button
+                    onClick={(e) => handleCountClick(e, h.name)}
+                    className="bg-gray-200 font-serif w-[30px] h-[80%] text-black text-lg"
+                  >
                     +
                   </button>
                 </div>

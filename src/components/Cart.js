@@ -13,14 +13,14 @@ const hoodies = [
   { name: "Phew", src: h5 },
   { name: "Mighty Morty", src: h6 },
 ];
-function Cart() {
+function Cart({total}) {
   return (
     <div className="flex-1 flex ">
       <div className="cart-items w-3/4 flex gap-4 flex-col  p-4 bg-purple-100">
         <h1 className="text-4xl font-mono font-semibold text-center ">
           Your Cart Items
         </h1>
-        <div className="bg-gray-400   p-2  grid grid-rows-[repeat(2,1fr)] grid-cols-[repeat(auto-fit,1fr)] md:grid-cols-3 gap-6">
+        {/* <div className="bg-gray-400   p-2  grid grid-rows-[repeat(2,1fr)] grid-cols-[repeat(auto-fit,1fr)] md:grid-cols-3 gap-6">
           {hoodies.map((h) => {
             return (
               <div
@@ -97,7 +97,7 @@ function Cart() {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </div>
       <div className="w-[25vw] checkout bottom-0   fixed right-0 h-[90vh]  bg-gray-200  flex flex-col pt-4 gap-12 shadow-lg min-w-[200px] shadow-gray-700">
         <h1 className="text-3xl lg:text-4xl text-center underline underline-offset-4 font-semibold mt-4">
@@ -105,7 +105,7 @@ function Cart() {
           Net Amount
         </h1>
         <h1 className="text-2xl font-semibold w-max mx-auto break-words">
-          $ 20000
+          $ {total}
         </h1>
         <button className=" bg-green-600 active:bg-green-700  transition duration-300   hover:scale-110 ease-in-out w-[60%] py-3 text-white tracking-wider font-bold text-xl md:text-2xl border-black border mx-auto">
           {" "}
@@ -121,7 +121,7 @@ function Cart() {
         <button className=" font-[default] bg-red-600 active:bg-red-700 transition duration-300 hover:scale-110 w-[60%]  ease-in-out py-3  text-white font-bold tracking-wider text-2xl border-black border mx-auto">
           <span className="empty"> Empty Cart</span>
         </button>
-        <div className="box w-full bg-purple-600 flex items-end text-white text-lg justify-evenly pb-4 mt-auto h-[17vh]">
+        <div className="box w-full bg-gray-600 flex items-end text-white text-lg justify-evenly pb-4 mt-auto h-[17vh]">
           <a
             href="https://github.com/Tribhuwan-Joshi/dripOn"
             target="_blank"

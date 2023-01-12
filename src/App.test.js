@@ -11,16 +11,17 @@ describe("Test Navbar", () => {
     <Router>
       render(
       <Navbar />
-      ); expect(screen.getByText("DripOn")).toBeInTheDocument();
+      );
     </Router>;
+    expect(screen.getByText("DripOn")).toBeInTheDocument();
   });
   it("Cart Link is present", () => {
     <Router>
       render(
       <Navbar />
-      ); 
-      expect(screen.getByRole("img")).toBeInTheDocument();
+      );
     </Router>;
+    expect(screen.getByRole("img")).toBeInTheDocument();
   });
 });
 
@@ -29,22 +30,26 @@ describe("Test Home Page", () => {
     <Router>
       render(
       <Home />
-      ); expect(screen.getByRole("heading").textContent).toMatch(/^get/i);
+      );
     </Router>;
+    expect(screen.getByRole("heading").textContent).toMatch(/^get/i);
   });
   it("render Buy Button", () => {
     <Router>
       render(
       <Home />
-      ); screen.getByText("Buy Now").toBeInTheDocument();
+      );
     </Router>;
+    screen.getByText("Buy Now").toBeInTheDocument();
   });
   it("button direct to Shop", () => {
     <Router>
       render(
       <Home />
-      ); const btn = screen.getByText("Buy Now"); userEvent.click(btn);
-      expect(screen.getByText("Hoodies")).toBeInTheDocument();
+      );
     </Router>;
+    const btn = screen.getByText("Buy Now");
+    userEvent.click(btn);
+    expect(screen.getByText("Hoodies")).toBeInTheDocument();
   });
 });
