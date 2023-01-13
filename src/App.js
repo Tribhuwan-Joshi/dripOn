@@ -4,7 +4,6 @@ import Home from "./components/Home";
 import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import itemData from "./ItemData";
-import { getCartItems,addDuplicateCart } from "./helper.js";
 import { useState, useEffect } from "react";
 
 export default function App() {
@@ -18,10 +17,10 @@ export default function App() {
     setHoddies(shopItems[0]);
     setWatches(shopItems[1]);
     setShoes(shopItems[2]);
-    setCartItems(getCartItems(shopItems));
+   
   }, [shopItems]);
 
-  // set total item count on basis of cartItem count
+
   useEffect(() => {
     setTotalItems(cartItems.length);
   }, [cartItems]);
@@ -61,22 +60,29 @@ export default function App() {
       )
     );
   }
-  function handleCartClick(e, name) {
+  function handleCartClick(e, name, h) {
     setShopItems((prev) =>
       prev.map((cat) => {
         return cat.map((item) => {
-          // console.log("on handle Click ", item, name);
           if (item.name === name) {
-            if (item.onCart === true) {
-              addDuplicateCart(name,setCartItems)
-            }
-            // console.log("Add to cart item is ", item[0]);
             return { ...item, onCart: true };
           }
           return item;
         });
       })
     );
+    setCartItems((prev) => {
+      let isPresent = prev.find((item) => item.name === name);
+      if (isPresent) {
+        return prev.map((item) => {
+          if (item.name === isPresent.name)
+            return { ...item, itemCount: +item.itemCount + +h.itemCount };
+          return item;
+        });
+      }
+
+      return [...prev, h];
+    });
 
     // filter all those shop items which has property onCart to true
   }

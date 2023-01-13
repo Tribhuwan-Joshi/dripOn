@@ -39,7 +39,7 @@ export function ShopCart(
           </button>
         </div>
         <button
-          onClick={(e) => handleCartClick(e, h.name)}
+          onClick={(e) => handleCartClick(e, h.name,h)}
           className="bg-green-600 px-1 font-sans active:bg-green-700"
         >
           Add To Cart

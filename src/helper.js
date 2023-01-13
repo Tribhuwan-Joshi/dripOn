@@ -11,23 +11,4 @@ function getTotal(items) {
   return 0;
 }
 
-function getCartItems(items) {
-  let arr = [].concat(...items);
-
-  let res = arr.filter((item) => item.onCart === true);
-  return res;
-}
-
-function addDuplicateCart(name, setCartItems) {
-  setCartItems((prev) =>
-    prev.map((item) => {
-      if (item.name === name) {
-        console.log("duplicate");
-        return { ...item, itemCount: item.itemCount + 1 };
-      }
-      return item;
-    })
-  );
-}
-
-export { getTotal, getCartItems, addDuplicateCart };
+export { getTotal };

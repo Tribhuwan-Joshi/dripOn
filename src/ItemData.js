@@ -1,3 +1,5 @@
+// faking api calls
+
 import h1 from "./assets/hoodies/h1.jpg";
 import h2 from "./assets/hoodies/h2.jpg";
 import h3 from "./assets/hoodies/h3.jpg";
