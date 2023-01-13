@@ -18,4 +18,16 @@ function getCartItems(items) {
   return res;
 }
 
-export { getTotal, getCartItems };
+function addDuplicateCart(name, setCartItems) {
+  setCartItems((prev) =>
+    prev.map((item) => {
+      if (item.name === name) {
+        console.log("duplicate");
+        return { ...item, itemCount: item.itemCount + 1 };
+      }
+      return item;
+    })
+  );
+}
+
+export { getTotal, getCartItems, addDuplicateCart };

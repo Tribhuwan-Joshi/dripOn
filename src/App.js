@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import itemData from "./ItemData";
-import { getCartItems } from "./helper.js";
+import { getCartItems,addDuplicateCart } from "./helper.js";
 import { useState, useEffect } from "react";
 
 export default function App() {
@@ -67,6 +67,9 @@ export default function App() {
         return cat.map((item) => {
           // console.log("on handle Click ", item, name);
           if (item.name === name) {
+            if (item.onCart === true) {
+              addDuplicateCart(name,setCartItems)
+            }
             // console.log("Add to cart item is ", item[0]);
             return { ...item, onCart: true };
           }
@@ -96,7 +99,16 @@ export default function App() {
             />
           }
         />
-        <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+              setShopItems={setShopItems}
+            />
+          }
+        />
       </Routes>
     </>
   );

@@ -2,21 +2,70 @@ import { useEffect, useState } from "react";
 import github from "../assets/github.png";
 import { getTotal } from "../helper";
 
-function countClickCart(e, name, setCartItems) {}
-function countChangeCart(e, name, setCartItems) {}
+function countClickCart(e, name, setCartItems) {
+  const sign = e.target.textContent;
+  setCartItems((prev) =>
+    prev.map((item) => {
+      if (item.name === name) {
+        return {
+          ...item,
+          itemCount:
+            sign === "+"
+              ? +item.itemCount + 1
+              : +item.itemCount > 1
+              ? +item.itemCount - 1
+              : 1,
+        };
+      }
+      return item;
+    })
+  );
+}
+function countChangeCart(e, name, setCartItems) {
+  const value = e.target.value;
+  setCartItems((prev) =>
+    prev.map((item) => {
+      if (item.name === name)
+        return { ...item, itemCount: value > 1 ? value : 1 };
+      return item;
+    })
+  );
+}
+function emptyCard(setCartItems,setShopItems) {
+  setCartItems([]);
+setShopItems((prev) =>
+  prev.map((cat) =>
+    cat.map((item) => {
+      return { ...item, onCart: false };
+    })
+  )
+);
 
-function removeCartItem(e, name, setCartItems) {}
+}
 
-function CartCard({ h, setCartItems }) {
-  console.log(h);
+function removeCartItem(name, setCartItems, setShopItems) {
+  setCartItems((prev) => prev.filter((item) => item.name !== name));
+  setShopItems((prev) =>
+    prev.map((cat) => {
+      return cat.map((item) => {
+        // console.log("on handle Click ", item, name);
+        if (item.name === name) {
+          // console.log("Add to cart item is ", item[0]);
+          return { ...item, onCart: false };
+        }
+        return item;
+      });
+    })
+  );
+}
 
+function CartCard({ h, setCartItems, setShopItems }) {
   return (
     <div
       key={h.name}
       className=" flex flex-col  border border-black flex-1 h-[400px]  "
     >
       <h2 className="bg-[#704F4F] text-white  tracking-wider text-center p-1 text-lg font-bold h-auto">
-        {console.log(h.name)}
         {h.name}
       </h2>
       <img src={h.src} alt={h.name} className=" flex-1  h-[80%] object-cover" />
@@ -46,7 +95,7 @@ function CartCard({ h, setCartItems }) {
           </button>
         </div>
         <button
-          onClick={(e) => removeCartItem(e, h.name, setCartItems)}
+          onClick={() => removeCartItem(h.name, setCartItems, setShopItems)}
           className="bg-red-400 px-1 font-sans active:bg-red-500"
         >
           Remove
@@ -56,7 +105,7 @@ function CartCard({ h, setCartItems }) {
   );
 }
 
-function Checkout({ total }) {
+function Checkout({ total, setCartItems ,setShopItems}) {
   return (
     <div className="w-[25vw] checkout bottom-0   fixed right-0 h-[90vh]  bg-gray-200  flex flex-col pt-4 gap-12 shadow-lg min-w-[200px] shadow-gray-700">
       <h1 className="text-3xl lg:text-4xl text-center underline underline-offset-4 font-semibold mt-4">
@@ -79,7 +128,10 @@ function Checkout({ total }) {
           </a>
         </span>
       </button>
-      <button className=" font-[default] bg-red-600 active:bg-red-700 transition duration-300 hover:scale-110 w-[60%]  ease-in-out py-3  text-white font-bold tracking-wider text-2xl border-black border mx-auto">
+      <button
+        onClick={() => emptyCard(setCartItems,setShopItems)}
+        className=" font-[default] bg-red-600 active:bg-red-700 transition duration-300 hover:scale-110 w-[60%]  ease-in-out py-3  text-white font-bold tracking-wider text-2xl border-black border mx-auto"
+      >
         <span className="empty"> Empty Cart</span>
       </button>
       <div className="box w-full bg-gray-600 flex items-end text-white text-lg justify-evenly pb-4 mt-auto h-[17vh]">
@@ -97,7 +149,7 @@ function Checkout({ total }) {
   );
 }
 
-function Cart({ cartItems, setCartItems }) {
+function Cart({ cartItems, setCartItems, setShopItems }) {
   const [total, setTotal] = useState(0);
 
   useEffect(() => setTotal(getTotal(cartItems)), [cartItems]);
@@ -114,11 +166,16 @@ function Cart({ cartItems, setCartItems }) {
           }   p-2  grid grid-rows-[repeat(2,1fr)] grid-cols-[repeat(auto-fit,minmax(400px,1fr))] md:grid-cols-3 gap-6`}
         >
           {cartItems.map((h) => (
-            <CartCard key={h.name} h={h} setCartItems={setCartItems} />
+            <CartCard
+              key={h.name}
+              h={h}
+              setShopItems={setShopItems}
+              setCartItems={setCartItems}
+            />
           ))}
         </div>
       </div>
-      <Checkout total={total} />
+      <Checkout total={total} setCartItems={setCartItems} setShopItems={setShopItems} />
     </div>
   );
 }
