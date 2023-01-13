@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/dripOn/static/css/main.e219987a.css",
-    "main.js": "/dripOn/static/js/main.4aee0474.js",
+    "main.css": "/dripOn/static/css/main.20409413.css",
+    "main.js": "/dripOn/static/js/main.0d8c8772.js",
     "static/media/w1.jpg": "/dripOn/static/media/w1.8e85f56ebdbc200c36af.jpg",
     "static/media/w2.jpg": "/dripOn/static/media/w2.c55f4270ae91ebfed127.jpg",
     "static/media/s3.jpg": "/dripOn/static/media/s3.04ca396a881605c71596.jpg",
@@ -24,11 +24,11 @@
     "static/media/logo.png": "/dripOn/static/media/logo.dd1c3166338c49335bd4.png",
     "static/media/h4.jpg": "/dripOn/static/media/h4.f3711128abed4bd2a527.jpg",
     "index.html": "/dripOn/index.html",
-    "main.e219987a.css.map": "/dripOn/static/css/main.e219987a.css.map",
-    "main.4aee0474.js.map": "/dripOn/static/js/main.4aee0474.js.map"
+    "main.20409413.css.map": "/dripOn/static/css/main.20409413.css.map",
+    "main.0d8c8772.js.map": "/dripOn/static/js/main.0d8c8772.js.map"
   },
   "entrypoints": [
-    "static/css/main.e219987a.css",
-    "static/js/main.4aee0474.js"
+    "static/css/main.20409413.css",
+    "static/js/main.0d8c8772.js"
   ]
 }
