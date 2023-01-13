@@ -1,4 +1,9 @@
-export function ShopCart(h, handleCountClick, handleCountChange, handleCartClick) {
+export function ShopCart(
+  h,
+  handleCountClick,
+  handleCountChange,
+  handleCartClick
+) {
   return (
     <div
       key={h.name}
@@ -35,7 +40,7 @@ export function ShopCart(h, handleCountClick, handleCountChange, handleCartClick
         </div>
         <button
           onClick={(e) => handleCartClick(e, h.name)}
-          className="bg-green-600 px-1 font-sans"
+          className="bg-green-600 px-1 font-sans active:bg-green-700"
         >
           Add To Cart
         </button>

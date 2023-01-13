@@ -4,7 +4,6 @@ function getTotal(items) {
       (total, item) => total + +item.price * +item.itemCount,
       0
     );
-    console.log("total cost element", res);
 
     return res;
   }
