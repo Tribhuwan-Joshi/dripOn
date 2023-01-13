@@ -4,12 +4,13 @@ import Home from "./components/Home";
 import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import itemData from "./ItemData";
+import { getCartItems } from "./helper.js";
 import { useState, useEffect } from "react";
 
 export default function App() {
   const [shopItems, setShopItems] = useState(itemData);
   const [cartItems, setCartItems] = useState([]);
-  // const [hoodies, watches, shoes] = [...itemData];
+  const [totalItems, setTotalItems] = useState(0);
   const [hoodies, setHoddies] = useState(shopItems[0]);
   const [watches, setWatches] = useState(shopItems[0]);
   const [shoes, setShoes] = useState(shopItems[0]);
@@ -17,7 +18,14 @@ export default function App() {
     setHoddies(shopItems[0]);
     setWatches(shopItems[1]);
     setShoes(shopItems[2]);
+    setCartItems(getCartItems(shopItems));
   }, [shopItems]);
+
+  // set total item count on basis of cartItem count
+  useEffect(() => {
+    setTotalItems(cartItems.length);
+  }, [cartItems]);
+
   function handleCountClick(e, name) {
     const sign = e.target.textContent;
 
@@ -53,17 +61,32 @@ export default function App() {
       )
     );
   }
-  function handleCartClick(name) {}
+  function handleCartClick(e, name) {
+    setShopItems((prev) =>
+      prev.map((cat) => {
+        return cat.map((item) => {
+          // console.log("on handle Click ", item, name);
+          if (item.name === name) {
+            // console.log("Add to cart item is ", item[0]);
+            return { ...item, onCart: true };
+          }
+          return item;
+        });
+      })
+    );
+
+    // filter all those shop items which has property onCart to true
+  }
+
   return (
     <>
-      <Navbar />
+      <Navbar totalItems={totalItems} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
           path="/shop"
           element={
             <Shop
-              itemData={itemData}
               hoodies={hoodies}
               shoes={shoes}
               watches={watches}
@@ -73,7 +96,7 @@ export default function App() {
             />
           }
         />
-        <Route path="/cart" element={<Cart cartItems={cartItems} />} />
+        <Route path="/cart" element={<Cart cartItems={cartItems} setCartItems={setCartItems} />} />
       </Routes>
     </>
   );
